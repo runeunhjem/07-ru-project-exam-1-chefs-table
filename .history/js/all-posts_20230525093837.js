@@ -1,5 +1,4 @@
 import { getPosts, posts } from "./get-posts.js";
-
 let filteredAndSortedPosts = [];
 let numToShow = 10;
 const loader = document.getElementById("loader");
@@ -40,56 +39,53 @@ function renderPostsOnPageLoad() {
 }
 
 function renderPosts() {
-  const imagePostsContainer = document.getElementById("image-gallery-containers");
-  imagePostsContainer.innerHTML = "";
+  const latestPostsContainer = document.getElementById("latest-posts-container");
+  latestPostsContainer.innerHTML = "";
 
   filteredAndSortedPosts.slice(0, numToShow).forEach((post) => {
     const postContainer = document.createElement("a");
     postContainer.href = `post-details.html?id=${post.postId}`;
-    postContainer.classList.add("image-post-container");
+    postContainer.classList.add("search-post-container");
+    postContainer.classList.add("latest-post-container");
     postContainer.style.opacity = "0";
-    imagePostsContainer.appendChild(postContainer);
-
-    const outOfViewMenuText = document.createElement("span");
-    outOfViewMenuText.classList.add("out-of-view-menu-text");
-    outOfViewMenuText.textContent = post.title;
-    outOfViewMenuText.style.color = "black";
-    postContainer.appendChild(outOfViewMenuText);
+    latestPostsContainer.appendChild(postContainer);
 
     const imageContainer = document.createElement("div");
-    imageContainer.classList.add("image-gallery-image-container");
+    imageContainer.classList.add("search-post-image-container");
     postContainer.appendChild(imageContainer);
 
     const image = new Image();
     image.onload = function () {
       imageContainer.style.backgroundImage = `url(${image.src})`;
-      image.alt = post.title;
     };
     image.src = post.image;
 
-    const titleContainer = document.createElement("div");
-    titleContainer.classList.add("title-container");
-    titleContainer.classList.add("hide");
-    titleContainer.textContent = post.title;
-    postContainer.appendChild(titleContainer);
+    const detailsContainer = document.createElement("div");
+    detailsContainer.classList.add("search-post-details-container");
+    postContainer.appendChild(detailsContainer);
 
-    postContainer.addEventListener("mouseover", () => {
-      titleContainer.classList.remove("hide");
-    });
+    const title = document.createElement("h2");
+    title.classList.add("post-title");
+    title.textContent = post.title;
+    detailsContainer.appendChild(title);
 
-    postContainer.addEventListener("mouseout", () => {
-      titleContainer.classList.add("hide");
-    });
+    const tagLine = document.createElement("p");
+    tagLine.classList.add("post-tagline");
+    tagLine.textContent = post.shortDescription;
+    detailsContainer.appendChild(tagLine);
 
-    imagePostsContainer.appendChild(postContainer);
+    const tags = document.createElement("p");
+    tags.classList.add("post-tags");
+    tags.textContent = `Tags: ${post.tags.join(", ")}`;
+    detailsContainer.appendChild(tags);
 
+    latestPostsContainer.appendChild(postContainer);
     setTimeout(() => {
       postContainer.style.opacity = "1";
     }, 10);
   });
 
   if (numToShow >= filteredAndSortedPosts.length) {
-
     const showMoreButton = document.querySelector(".show-more-button");
     if (showMoreButton) {
       showMoreButton.remove();
@@ -100,7 +96,7 @@ function renderPosts() {
       const showMoreButton = document.createElement("button");
       showMoreButton.classList.add("show-more-button");
       showMoreButton.textContent = "Show More";
-      imagePostsContainer.appendChild(showMoreButton);
+      latestPostsContainer.appendChild(showMoreButton);
       showMoreButton.addEventListener("click", () => {
         numToShow += 10;
         renderPosts();
@@ -135,10 +131,10 @@ let selectedCategory = null;
 let selectedTag = null;
 
 async function fetchAndRenderPosts() {
-  const imagePostsContainer = document.getElementById("image-gallery-containers");
+  const latestPostsContainer = document.getElementById("latest-posts-container");
   loader.classList.add("active");
   postsNote.classList.add("hide");
-  imagePostsContainer.classList.add("hide");
+  latestPostsContainer.classList.add("hide");
   filterSection.classList.add("hide");
   await getPosts();
   populateCategorySelector();
@@ -146,7 +142,7 @@ async function fetchAndRenderPosts() {
   renderPostsOnPageLoad();
   loader.classList.remove("active");
   postsNote.classList.remove("hide");
-  imagePostsContainer.classList.remove("hide");
+  latestPostsContainer.classList.remove("hide");
   filterSection.classList.remove("hide");
 }
 function populateCategorySelector() {
@@ -154,6 +150,7 @@ function populateCategorySelector() {
   const categories = Array.from(new Set(posts.flatMap((post) => post.categories)));
   categories.sort();
   categorySelector.innerHTML = "";
+
   const allOption = document.createElement("option");
   allOption.value = "";
   allOption.textContent = "All";
@@ -172,6 +169,7 @@ function populateTagsSelector() {
   const tags = Array.from(new Set(posts.flatMap((post) => post.tags)));
   tags.sort();
   tagsSelector.innerHTML = "";
+
   const allOption = document.createElement("option");
   allOption.value = "";
   allOption.textContent = "All";
@@ -186,3 +184,4 @@ function populateTagsSelector() {
 }
 
 fetchAndRenderPosts();
+

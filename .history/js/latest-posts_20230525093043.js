@@ -1,5 +1,4 @@
 import { getPosts, posts } from "./get-posts.js";
-
 let numToShow = 10;
 const loader = document.getElementById("loader");
 const postsNote = document.getElementById("latest-posts-note");

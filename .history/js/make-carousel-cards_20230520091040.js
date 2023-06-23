@@ -1,6 +1,5 @@
 import { getPosts, posts } from "./get-posts.js";
 import { checkScrollHorizontal } from "./check-scroll-horizontal.js";
-
 const loader = document.getElementById("loader");
 
 async function init() {

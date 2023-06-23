@@ -1,6 +1,5 @@
 import { getComments, comments } from "./add-comment.js";
 import { validateCommentForm } from "./validate-comment-form.js";
-
 const commentName = document.getElementById("name-input");
 const commentEmail = document.getElementById("email-input");
 const commentContent = document.getElementById("comment-input");
