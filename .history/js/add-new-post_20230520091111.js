@@ -3,6 +3,7 @@ const commentApi = "https://wordpress.runeunhjem.no/wp-json/wp/v2/comments";
 const queryString = window.location.search;
 const params = new URLSearchParams(queryString);
 const postId = parseInt(params.get("id"));
+// console.log("postId comment is: ", postId);
 const commentName = document.getElementById("name-input");
 const commentEmail = document.getElementById("email-input");
 const commentContent = document.getElementById("comment-input");

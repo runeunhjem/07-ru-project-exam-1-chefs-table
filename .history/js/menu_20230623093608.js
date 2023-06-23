@@ -11,6 +11,7 @@ function openMenu() {
   isMenuOpen = true;
   clonedNav.classList.add("is-open");
   const burgerIconRect = burgerIcon.getBoundingClientRect();
+  // const clonedNavRect = clonedNav.getBoundingClientRect();
   const clonedNavBottom = window.innerHeight - burgerIconRect.bottom;
   const clonedNavRight = window.innerWidth - burgerIconRect.right;
 

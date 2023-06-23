@@ -25,7 +25,6 @@ fetch("https://your-wordpress-site.com/wp-json/wp/v2/posts", {
 })
   .then((response) => response.json())
   .then((data) => {
-    // console.log("Post created:", data);
   })
   .catch((error) => {
     console.error("Error creating post:", error);

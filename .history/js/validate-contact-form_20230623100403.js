@@ -10,7 +10,7 @@ function validateContactForm() {
   const contactContent = document.getElementById("your-message");
   const contactContentError = document.getElementById("message-input-error");
   const confirmSuccess = document.getElementById("message-sent");
-
+  
   contactName.addEventListener("focus", function () {
     contactName.placeholder = "Min 5 characters";
   });
@@ -36,7 +36,7 @@ function validateContactForm() {
     contactContent.placeholder = "Your Message";
   });
 
-  function validateForm() {
+  function validateForm(event) {
 
     if (checkLength(contactName.value, 4)) {
       contactNameError.style.display = "none";

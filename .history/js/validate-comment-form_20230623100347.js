@@ -1,4 +1,5 @@
 function validateCommentForm() {
+  // event.preventDefault();
   const commentForm = document.getElementById("comment-form");
   const postCommentButton = document.getElementById("post-comment");
   const commentName = document.getElementById("name-input");

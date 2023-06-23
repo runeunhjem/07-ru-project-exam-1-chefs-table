@@ -1,4 +1,5 @@
 function validateCommentForm() {
+  // event.preventDefault();
   const commentForm = document.getElementById("comment-form");
   const postCommentButton = document.getElementById("post-comment");
   const commentName = document.getElementById("name-input");
@@ -27,6 +28,9 @@ function validateCommentForm() {
   commentContent.addEventListener("blur", function () {
     commentContent.placeholder = "Comment...";
   });
+
+  // function validateForm(event) {
+  //   let formSubmitted = true;
 
   function validateForm() {
     if (checkLength(commentName.value, 1)) {
@@ -71,6 +75,7 @@ function validateCommentForm() {
   }
 
   commentForm.addEventListener("submit", function (event) {
+
     validateForm(event);
   });
 
