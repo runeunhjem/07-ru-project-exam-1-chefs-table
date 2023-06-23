@@ -19,10 +19,6 @@ body {
   overflow-x: hidden;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 main {
   display: flex;
   flex-direction: column;
@@ -347,4 +343,4 @@ h4 {
   .leave-a-comment, .user-comments, #contact-note {
     width: 95%;
   }
-}/*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=styles_20230522080953.css.map */
