@@ -13,15 +13,6 @@ function toTopButton() {
       backToTopButton.classList.remove("back-to-top-button-show");
     }
   });
-
-  backToTopButton.addEventListener("click", (event) => {
-    event.preventDefault();
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  });
 }
 
 export { toTopButton };

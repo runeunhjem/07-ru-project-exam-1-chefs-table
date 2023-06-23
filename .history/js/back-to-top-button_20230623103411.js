@@ -14,7 +14,7 @@ function toTopButton() {
     }
   });
 
-  backToTopButton.addEventListener("click", (event) => {
+  backToTopLink.addEventListener("click", (event) => {
     event.preventDefault();
 
     window.scrollTo({

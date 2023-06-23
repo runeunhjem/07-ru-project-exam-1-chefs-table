@@ -14,12 +14,10 @@ function toTopButton() {
     }
   });
 
-  backToTopButton.addEventListener("click", (event) => {
-    event.preventDefault();
-
+  backToTopButton.addEventListener("click", () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: "smooth", // Add smooth behavior for scrolling
     });
   });
 }
