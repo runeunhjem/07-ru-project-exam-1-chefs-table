@@ -29,8 +29,8 @@ function validateCommentForm() {
     commentContent.placeholder = "Comment...";
   });
 
-  // function validateForm(event) {
-  //   let formSubmitted = true;
+  function validateForm(event) {
+    let formSubmitted = true;
 
   function validateForm() {
     if (checkLength(commentName.value, 1)) {
@@ -75,7 +75,7 @@ function validateCommentForm() {
   }
 
   commentForm.addEventListener("submit", function (event) {
-    // formSubmitted = true;
+    formSubmitted = true;
     validateForm(event);
   });
 

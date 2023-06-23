@@ -75,7 +75,7 @@ function validateCommentForm() {
   }
 
   commentForm.addEventListener("submit", function (event) {
-    // formSubmitted = true;
+    formSubmitted = true;
     validateForm(event);
   });
 

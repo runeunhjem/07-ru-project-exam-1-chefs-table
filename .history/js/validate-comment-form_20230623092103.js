@@ -29,10 +29,9 @@ function validateCommentForm() {
     commentContent.placeholder = "Comment...";
   });
 
-  // function validateForm(event) {
-  //   let formSubmitted = true;
+  function validateForm(event) {
+    let formSubmitted = true;
 
-  function validateForm() {
     if (checkLength(commentName.value, 1)) {
       commentNameError.style.display = "none";
       commentName.style.backgroundColor = "#8fff98";
@@ -75,7 +74,7 @@ function validateCommentForm() {
   }
 
   commentForm.addEventListener("submit", function (event) {
-    // formSubmitted = true;
+    formSubmitted = true;
     validateForm(event);
   });
 

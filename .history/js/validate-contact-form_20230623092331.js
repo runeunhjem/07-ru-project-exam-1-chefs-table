@@ -93,7 +93,7 @@ function validateContactForm() {
     }
   }
   contactForm.addEventListener("submit", function (event) {
-    // formSubmitted = true;
+    formSubmitted = true;
     validateForm(event);
   });
 

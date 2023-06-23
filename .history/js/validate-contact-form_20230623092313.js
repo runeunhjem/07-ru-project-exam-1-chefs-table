@@ -37,8 +37,7 @@ function validateContactForm() {
     contactContent.placeholder = "Your Message";
   });
 
-  function validateForm() {
-  // function validateForm(event) {
+  function validateForm(event) {
 
     if (checkLength(contactName.value, 4)) {
       contactNameError.style.display = "none";
@@ -93,7 +92,7 @@ function validateContactForm() {
     }
   }
   contactForm.addEventListener("submit", function (event) {
-    // formSubmitted = true;
+    formSubmitted = true;
     validateForm(event);
   });
 
